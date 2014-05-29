@@ -1,0 +1,28 @@
+<h1>Listing posts</h1>
+
+<ul class='thumbnails' id='posts'>
+  <% @posts.each do |post| %>
+    <div id='post'>
+      <li class='span3'>
+       <div class='thumbnail'>
+        <div class='caption'>
+          <h3><%= post.titulo %></h3>
+          <img src="http://graph.facebook.com/<%= "#{post.user.try(:uid)}" %>/picture?type=normal" alt="..." class="img-circle">
+           <h4><span class="text-muted"><%= "#{post.user.try(:name)} "%></span></h4>
+       <h4><small class="text-muted"><%= post.created_at.to_formatted_s(:long_ordinal) %></small></h4>
+       <small><b><%= link_to "Leer...", post %></b></small>
+          </div>
+        <% if post.has_photo? %>
+          <%= image_tag post.photo_path %>
+         <% end %> 
+         
+        </div>
+       </li>
+   </div>
+      </li>
+  <% end %>
+</ul>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>

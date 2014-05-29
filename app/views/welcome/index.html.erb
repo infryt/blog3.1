@@ -1,0 +1,16 @@
+
+<div class="container">
+<div class='jumbotron'>
+
+	        <% if session[:user_id] == nil %>
+	        	<h1>Bienvenido Metro Post</h1>
+				<h2>Porfavor logueate!!!</h2>
+			<%else%>
+				<h1>Welcome to Metro Post</h1>
+				 <img src="http://graph.facebook.com/<%= @user.uid %>/picture?type=normal" alt="..." class="img-circle">
+ 				<h3><%= @user.name %></h3>
+ 				<h5>Miembro desde: <%= @user.created_at.to_formatted_s(:long) %></h5>
+	       <% end %> 
+
+</div>
+</div>
